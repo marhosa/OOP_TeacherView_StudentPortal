@@ -5,8 +5,15 @@ Methods Description are generated with document generator.
 
 Everything here is unique and no AI generators are made (except sa documentation katamad gawin lol).
 
-Issues running on Apache Netbeans:
-[Try This](https://github.com/marhosa/dump_javaoop/tree/main/JavaApplication24)
+**How to run in Apache Netbeans IDE 22**
+
+step 1 - copy the "Main" folder (OOPMIDTERMSLAB/src/Main)
+
+step 2 - create a new apache netbeans IDE 22 project
+
+step 3 - paste it Source Packages
+
+[Apache Netbeans Project Version](https://github.com/marhosa/dump_javaoop/tree/main/JavaApplication24)
 
 
 How to use:
@@ -15,7 +22,7 @@ How to use:
 1.) [Download](https://github.com/marhosa/OOP_TeacherView_StudentPortal/archive/refs/heads/main.zip) source code
 
 
-2.) Go To OOPMIDTERMSLAB -> src -> Main and run Main.java
+2.) Go To OOPMIDTERMSLAB/src/Main and run Main.java
 
 Some Stuff to Note:
 ---
