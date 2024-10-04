@@ -137,9 +137,9 @@ public class Main {
                         for (Student student : students) {
                             if(student.getStudent_number() == studentnumtemp){
 
-                                    for(Subject subs : subjects){
-                                        subs.removeStudent(student.getStudent_number());
-                                    }
+                                for(Subject subs : subjects){
+                                    subs.removeStudent(student.getStudent_number());
+                                }
 
                                 students.remove(student);
                                 System.out.println("Student " + studentnumtemp + " has been removed");
@@ -350,39 +350,39 @@ public class Main {
                     studentsubcount = 0;
                     System.out.print("Input Student Number or Name to Specifically Search: ");
                     sc.nextLine();
-                     studentnametemp = sc.nextLine();
-                     for(Student student : students){
-                         if ((studentnametemp.matches("\\d+")&& student.getStudent_number() == Integer.parseInt(studentnametemp)) || (student.getLastName().equalsIgnoreCase(studentnametemp)) || (student.getFirstName().equalsIgnoreCase(studentnametemp))) {
-                             spacer(50);
-                             System.out.print("----------------\nStudent Found! Here is the info of the student: \n");
-                             System.out.println("First Name: " + student.getFirstName());
-                             System.out.println("Last Name: " + student.getLastName());
-                             System.out.println("Student Number: " + student.getStudent_number());
-                             spacer(2);
-                             System.out.println("Student Grades per subject: ");
-                             for(Subject sub : subjects){
-                                 if(sub.isEnrolled(student.getStudent_number())){
-                                     tempflag = true;
-                                     System.out.println("Subject: " + sub.getSubject_Name() + " Grade: " + sub.getStudent_Grade(student.getStudent_number()));
-                                     studentgwa += sub.getStudent_Grade(student.getStudent_number());
-                                     studentsubcount++;
-                                 }
-                             }
-                             break;
-                         }
+                    studentnametemp = sc.nextLine();
+                    for(Student student : students){
+                        if ((studentnametemp.matches("\\d+")&& student.getStudent_number() == Integer.parseInt(studentnametemp)) || (student.getLastName().equalsIgnoreCase(studentnametemp)) || (student.getFirstName().equalsIgnoreCase(studentnametemp))) {
+                            spacer(50);
+                            System.out.print("----------------\nStudent Found! Here is the info of the student: \n");
+                            System.out.println("First Name: " + student.getFirstName());
+                            System.out.println("Last Name: " + student.getLastName());
+                            System.out.println("Student Number: " + student.getStudent_number());
+                            spacer(2);
+                            System.out.println("Student Grades per subject: ");
+                            for(Subject sub : subjects){
+                                if(sub.isEnrolled(student.getStudent_number())){
+                                    tempflag = true;
+                                    System.out.println("Subject: " + sub.getSubject_Name() + " Grade: " + sub.getStudent_Grade(student.getStudent_number()));
+                                    studentgwa += sub.getStudent_Grade(student.getStudent_number());
+                                    studentsubcount++;
+                                }
+                            }
+                            break;
+                        }
 
-                     }
+                    }
 
 
-                     if(!tempflag){
-                         System.out.println(" EMPTY...");
-                         confirm();
-                     }
-                     else{
-                         System.out.println("Student GWA: " + (studentgwa/studentsubcount));
-                         System.out.println("\nif you want to change the student grade, please go to the subject list menu...");
-                         confirm();
-                     }
+                    if(!tempflag){
+                        System.out.println(" EMPTY...");
+                        confirm();
+                    }
+                    else{
+                        System.out.println("Student GWA: " + (studentgwa/studentsubcount));
+                        System.out.println("\nif you want to change the student grade, please go to the subject list menu...");
+                        confirm();
+                    }
                     break;
 
 
@@ -409,10 +409,10 @@ public class Main {
                         }
                         temparr[0][k] = student.getStudent_number();
 
-                            if(studentsubcount > 0) {
-                                temparr[1][k] = studentgwa / studentsubcount;
-                            }
+                        if(studentsubcount > 0) {
+                            temparr[1][k] = studentgwa / studentsubcount;
                         }
+                    }
 
                         /*
                         at this point, meron ng 2d array ng float, row 1 = SN, row 2 = GWA,
