@@ -6,6 +6,12 @@ import java.util.SortedMap;
 
 public class Main {
 
+    static void confirm(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nPress Enter to continue... ");
+        scan.nextLine();
+    }
+
     static boolean studentExists(int SN, List<Student> students) {
         for (Student student : students) {
             if(student.getStudent_number() == SN){
@@ -27,6 +33,8 @@ public class Main {
         }
     }
 
+
+
     static void listsubmenu(){
         System.out.println("--- actions ---");
         System.out.println("[1] Add Student from course");
@@ -47,7 +55,7 @@ public class Main {
         System.out.println("STUDENT MANAGING PORTAL\n");
         System.out.println("[1] ADD/REMOVE STUDENT");
         System.out.println("[2] ADD/REMOVE SUBJECT");
-        System.out.println("\n[3] VIEW SUBJECT");
+        System.out.println("\n[3] MODIFY SUBJECT");
         System.out.println("[4] SEARCH STUDENT");
         System.out.println("\n[5] LIST STUDENTS RANKED BY GWA");
         System.out.println("[6] LIST ALL STUDENTS and their INFO");
@@ -94,6 +102,7 @@ public class Main {
 
 
         while(true){
+            spacer(50);
             printMainMenu();
             System.out.print("Input Choice: ");
             main_choice = sc.nextInt();
@@ -112,8 +121,14 @@ public class Main {
                         lastname = sc.nextLine();
                         students.add(new Student(firstname, lastname, generateStudentNum(studentcount)));
                         studentcount++;
+                        confirm();
                     }
                     else if (main_choice == 2){
+                        if(students.isEmpty()){
+                            System.out.println("Cannot remove, student list is empty...");
+                            confirm();
+                            break;
+                        }
                         listStudents(students);
                         System.out.print("Input Student Number: ");
                         studentnumtemp = sc.nextInt();
@@ -129,16 +144,19 @@ public class Main {
                                 students.remove(student);
                                 System.out.println("Student " + studentnumtemp + " has been removed");
                                 tempflag = true;
+                                confirm();
                                 break;
                             }
                         }
                         if(!tempflag){
                             System.out.println("STUDENT NOT FOUND...");
+                            confirm();
                         }
                         break;
                     }
                     else if (main_choice == 3){
                         System.out.println("Invalid Choice...");
+                        confirm();
                     }
                     break;
                 case 2:
@@ -152,8 +170,14 @@ public class Main {
                         subjectname = sc.nextLine();
                         subjects.add(new Subject(subjectname, generateCourseCode(subjectcount)));
                         subjectcount++;
+                        confirm();
                     }
                     else if (main_choice == 2){
+                        if(subjects.isEmpty()){
+                            System.out.println("Cannot remove, subject list is empty...");
+                            confirm();
+                            break;
+                        }
                         spacer(3);
                         listSubjects(subjects);
                         spacer(1);
@@ -164,17 +188,20 @@ public class Main {
                             if(subs.getSubject_Code() == subjectcodetemp){ //why error?
                                 subjects.remove(subs);
                                 System.out.println("Subject " + subjectcodetemp + " has been removed");
+                                confirm();
                                 tempflag = true;
                                 break;
                             }
                         }
                         if(!tempflag){
                             System.out.println("SUBJECT NOT FOUND...");
+                            confirm();
                         }
                         break;
                     }
                     else if (main_choice == 3){
                         System.out.println("Invalid Choice...");
+                        confirm();
                     }
                     break;
 
@@ -182,11 +209,14 @@ public class Main {
                     spacer(5);
                     if(subjects.isEmpty()){
                         System.out.println("NO SUBJECTS...");
+                        confirm();
                         break;
                     }
+                    spacer(50);
                     listSubjects(subjects);
                     System.out.print("Input Subject Code: ");
                     subjectcodetemp = sc.nextInt();
+                    spacer(50);
                     tempflag = false;
                     for (Subject subs : subjects) {
                         if(subs.getSubject_Code() == subjectcodetemp){
@@ -204,6 +234,7 @@ public class Main {
                                     spacer(5);
                                     if(subs.enrolledStudentsTotal() == subs.getMax_Students()){
                                         System.out.println("Cannot Add, COURSE has no more SLOTS");
+                                        confirm();
                                         break;
                                     }
                                     listStudents(students);
@@ -212,22 +243,26 @@ public class Main {
 
                                     if(subs.isEnrolled(studentnumtemp)){
                                         System.out.println("Student Already Exists!");
+                                        confirm();
                                         break;
                                     }
                                     if(!studentExists(studentnumtemp, students)){
                                         System.out.println("Student does not Exist!");
+                                        confirm();
                                         break;
                                     }
 
                                     System.out.print("Enter Student Grade: ");
                                     studentgradetemp = sc.nextInt();
-                                    while(studentnumtemp > 100 || studentnumtemp < 0){
+                                    while(studentgradetemp > 100 || studentgradetemp < 0){
+                                        spacer(4);
                                         System.out.println("Student Grade is not valid! Range: 0 - 100 only");
                                         System.out.print("Try Again... Enter Student Grade: ");
-                                        studentnumtemp = sc.nextInt();
+                                        studentgradetemp = sc.nextInt();
                                     }
                                     subs.setStudent_Grades(studentnumtemp, studentgradetemp);
                                     System.out.println("Student " + studentnumtemp + " has been enrolled");
+                                    confirm();
                                     break;
 
                                 //remove student from course
@@ -239,11 +274,13 @@ public class Main {
 
                                     if(!studentExists(studentnumtemp, students)){
                                         System.out.println("Student does not Exist!");
+                                        confirm();
                                         break;
                                     }
 
                                     subs.removeStudent(studentnumtemp);
                                     System.out.println("Student " + studentnumtemp + " has been REMOVED");
+                                    confirm();
                                     break;
 
                                 //change existing student grade
@@ -255,22 +292,23 @@ public class Main {
 
                                     if(!studentExists(studentnumtemp, students)){
                                         System.out.println("Student does not Exist!");
+                                        confirm();
                                         break;
                                     }
                                     System.out.print("Enter NEW Student Grade: ");
                                     studentgradetemp = sc.nextInt();
-                                    while(studentnumtemp > 100 || studentnumtemp < 0){
+                                    while(studentgradetemp > 100 || studentgradetemp < 0){
                                         System.out.println("Student Grade is not valid! Range: 0 - 100 only");
                                         System.out.print("Try Again... Enter Student Grade: ");
-                                        studentnumtemp = sc.nextInt();
+                                        studentgradetemp = sc.nextInt();
                                     }
                                     subs.changeGrade(studentnumtemp, studentgradetemp);
                                     System.out.println("Student " + studentnumtemp + " grade has been changed");
+                                    confirm();
                                     break;
 
                                 //list registered students and their grade
                                 case 4:
-                                    spacer(5);
                                     int temparr[][] = subs.getStudentnumandgrade();
                                     for(int i=0; i < temparr[0].length; i++){
                                         for(Student student : students){
@@ -279,9 +317,11 @@ public class Main {
                                             }
                                         }
                                     }
+                                    confirm();
                                     break;
                                 default:
                                     System.out.println("Invalid Input...");
+                                    confirm();
                                     break;
                             }
                             break;
@@ -289,6 +329,7 @@ public class Main {
                     }
                     if(!tempflag){
                         System.out.println("\n-------\nSUBJECT NOT FOUND...");
+                        confirm();
                         break;
                     }
                     break;
@@ -299,6 +340,7 @@ public class Main {
                     spacer(5);
                     if(students.isEmpty()){
                         System.out.println("NO STUDENTS");
+                        confirm();
                         break;
                     }
                     studentgwa = 0;
@@ -311,7 +353,7 @@ public class Main {
                      studentnametemp = sc.nextLine();
                      for(Student student : students){
                          if ((studentnametemp.matches("\\d+")&& student.getStudent_number() == Integer.parseInt(studentnametemp)) || (student.getLastName().equalsIgnoreCase(studentnametemp)) || (student.getFirstName().equalsIgnoreCase(studentnametemp))) {
-                             spacer(5);
+                             spacer(50);
                              System.out.print("----------------\nStudent Found! Here is the info of the student: \n");
                              System.out.println("First Name: " + student.getFirstName());
                              System.out.println("Last Name: " + student.getLastName());
@@ -334,16 +376,18 @@ public class Main {
 
                      if(!tempflag){
                          System.out.println(" EMPTY...");
+                         confirm();
                      }
                      else{
                          System.out.println("Student GWA: " + (studentgwa/studentsubcount));
                          System.out.println("\nif you want to change the student grade, please go to the subject list menu...");
+                         confirm();
                      }
                     break;
 
 
                 case 5:
-
+                    spacer(50);
                     //creates a 2d array containing
                     float temparr [][] = new float[2][students.size()];
 
@@ -412,6 +456,7 @@ public class Main {
                             }
                         }
                     }
+                    confirm();
                     break;
 
 
@@ -420,8 +465,10 @@ public class Main {
                     for each loop?
                  */
                 case 6:
+                    spacer(50);
                     if(students.isEmpty()){
                         System.out.println("NO STUDENTS");
+                        confirm();
                         break;
                     }
                     else{
@@ -447,14 +494,16 @@ public class Main {
                             System.out.println("STUDENT NOT ENROLLED TO ANY SUBJECT");
                         }
                     }
+                    confirm();
                     break;
 
 
 
                 case 7:
-
+                    spacer(50);
                     if(subjects.isEmpty()){
                         System.out.println("NO SUBJECTS ADDED YET...");
+                        confirm();
                         break;
                     }
 
@@ -524,6 +573,7 @@ public class Main {
                         System.out.println("Lowest Grade: " + persub[2][i]);
                         spacer(2);
                     }
+                    confirm();
                     break;
 
 
@@ -531,6 +581,7 @@ public class Main {
 
 
                 case 8:
+                    spacer(5);
                     sc.close();
                     System.out.println("EXITING MAIN PROGRAM... THANK YOU FOR USING!");
                     return;
