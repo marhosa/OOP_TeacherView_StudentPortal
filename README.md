@@ -8,10 +8,9 @@ Everything here is unique and no AI generators are made (except sa documentation
 How to use:
 ---
 
-1.) [Download](https://github.com/marhosa/OOP_TeacherView_StudentPortal/archive/refs/heads/main.zip) source code
+step 1 - [Download](https://github.com/marhosa/OOP_TeacherView_StudentPortal/archive/refs/heads/main.zip) source code
 
-
-2.) Go To OOPMIDTERMSLAB/src/Main and run Main.java
+step 2 - Go To OOPMIDTERMSLAB/src/Main and run Main.java
 
 
 **How to run in Apache Netbeans IDE 22**
@@ -20,7 +19,7 @@ step 1 - once downloaded, copy the "Main" folder (OOPMIDTERMSLAB/src/Main)
 
 step 2 - create a new apache netbeans IDE 22 project
 
-step 3 - paste it Source Packages
+step 3 - paste it in Source Packages
 
 [Apache Netbeans Project Version](https://github.com/marhosa/dump_javaoop/tree/main/JavaApplication24)
 
