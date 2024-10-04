@@ -1,6 +1,7 @@
 # Student_Professor_Admin_System
 Beginner Simple Java OOP Project where you are a teacher that can add and remove your own students and courses.
 took me 8hrs to code and debug... well mostly debug.
+Methods Description are generated with document generator.
 
 How to use:
 ---
@@ -24,59 +25,81 @@ Sort Algorithm Used is Bubble Sort.
 Main.java
 ---
 
+
 **STATIC METHODS**
 
-studentExists()
+---
 
-- inputs
+**studentExists(int SN, List<Student> students)**
 
--  parameter: int SN
+- Parameters:
+  - `SN`: Student number (int).
+  - `students`: List of `Student` objects (List<Student>).
+  
+- Description: Checks if a student with the given student number (`SN`) exists in the `students` list. Returns `true` if the student is found, otherwise returns `false`.
 
--  parameter: List<Student> students 
+---
 
-- description:  Checks if SN exists (Student Number) in the list parameter students, returns a boolean, true if yes, false otherwise.
+**listStudents(List<Student> students)**
 
+- Parameters:
+  - `students`: List of `Student` objects (List<Student>).
+  
+- Description: Outputs the unique identifier (Student Number) and name (First Name and Last Name) of each student in the `students` list. No return type.
 
-listStudents() and listSubject()
+---
 
-- parameters: List<Student> students and List<Subject> subjects.
+**listSubject(List<Subject> subjects)**
 
-- description: simply outputs all the items in the list, specifically their Unique Identifier and Name. no return type.
+- Parameters:
+  - `subjects`: List of `Subject` objects (List<Subject>).
+  
+- Description: Outputs the unique identifier (Subject Code) and name of each subject in the `subjects` list. No return type.
 
+---
 
-listsubmenu() 
+**listsubmenu()**
 
-- description: simply outputs a description of other options when user is about to modify a subject. no parameters, no return type.
+- Parameters: None.
+  
+- Description: Displays a description of available options for modifying a subject. No parameters and no return type.
 
+---
 
-spacer()
+**spacer(int x)**
 
-- parameter: int x
+- Parameters:
+  - `x`: Number of newlines to output (int).
+  
+- Description: Outputs `x` number of newlines to clean up the terminal display. No return type.
 
-- description: simply outputs x amount of endlines to make the terminal look clean. no return type.
+---
 
+**printMainMenu()**
 
-printMainMenu()
+- Parameters: None.
+  
+- Description: Displays the main menu in the terminal. No parameters and no return type.
 
-- description: simply outputs the main menu as a terminal GUI. no return type, no parameters.
+---
 
+**generateStudentNum(int x)**
 
-generateStudentNum()
+- Parameters:
+  - `x`: Index or sequential identifier of the student (int).
+  
+- Description: Returns a student number based on the provided index `x`. Student numbers of deleted accounts cannot be reused. Returns an integer representing the student number.
 
-- parameter: int x
+---
 
-- description: returns a student number based on the index of the created account, NOTE: deleted accounts cannot have their student number reused. returns an integer (the student number).
+**generateCourseCode(int x)**
 
+- Parameters:
+  - `x`: Index or sequential identifier of the course (int).
+  
+- Description: Similar to `generateStudentNum()`, but generates a course code for a subject instead of a student. Returns an integer representing the course code.
 
-generateCourseCode()
-
-- paramter: int x
-
-- description: same as generateStudentNum() method but for Subjects instead of Students.
-
-
-Here’s the documentation for the `People` class in the style you requested:
-
+---
 ---
 
 **CLASS: People**
@@ -134,3 +157,175 @@ setLastName(String name)
 ---
 
 
+
+---
+
+**CLASS: Student**
+
+---
+
+**CONSTRUCTOR**
+
+Student(String FN, String LN, int sn)
+
+- Parameters:
+  - `FN`: First Name of the student (String).
+  - `LN`: Last Name of the student (String).
+  - `sn`: Student number (int).
+  
+- Description: Initializes a `Student` object with a given first name (`FN`), last name (`LN`), and student number (`sn`). Calls the constructor of the superclass `People` to set the first and last name.
+
+---
+
+**GETTERS**
+
+getStudent_number()
+
+- Parameters: None.
+  
+- Description: Returns the student number (`student_number`) of the student as an `int`.
+
+---
+
+**SETTERS**
+
+setStudent_number(int student_number)
+
+- Parameter:
+  - `student_number`: New student number to be set (int).
+  
+- Description: Updates the student number (`student_number`) of the student to the provided `student_number`.
+
+---
+
+
+
+
+Here’s the documentation for the `Subject` class in the style you requested:
+
+---
+
+**CLASS: Subject**
+
+---
+
+**CONSTRUCTOR**
+
+Subject(String Subject_Name, int Subject_Code)
+
+- Parameters:
+  - `Subject_Name`: Name of the subject (String).
+  - `Subject_Code`: Code of the subject (int).
+  
+- Description: Initializes a `Subject` object with the provided `Subject_Name` and `Subject_Code`. Initializes a 2D array `Subject_Grades` to store student numbers and their corresponding grades, with a maximum of 100 students.
+
+---
+
+**METHODS**
+
+---
+
+**enrolledStudentsTotal()**
+
+- Parameters: None.
+  
+- Description: Returns the total number of students enrolled in the subject. It checks the `Subject_Grades` array and counts students whose student number is not zero.
+
+---
+
+**getMax_Students()**
+
+- Parameters: None.
+  
+- Description: Returns the maximum number of students allowed in the subject (`Max_Students`), which is set to 100.
+
+---
+
+**getStudentnumandgrade()**
+
+- Parameters: None.
+  
+- Description: Returns a 2D array of enrolled students and their grades. The first row contains the student numbers, and the second row contains their corresponding grades. Only enrolled students are included in this array (i.e., those whose student number is not zero).
+
+---
+
+**changeGrade(int SN, int grade)**
+
+- Parameters:
+  - `SN`: Student number (int).
+  - `grade`: New grade to be assigned (int).
+  
+- Description: Updates the grade of the student with the given student number (`SN`). It searches the `Subject_Grades` array and modifies the grade of the matching student.
+
+---
+
+**getSubject_Name()**
+
+- Parameters: None.
+  
+- Description: Returns the name of the subject (`Subject_Name`) as a `String`.
+
+---
+
+**getSubject_Code()**
+
+- Parameters: None.
+  
+- Description: Returns the code of the subject (`Subject_Code`) as an `int`.
+
+---
+
+**isEnrolled(int SN)**
+
+- Parameters:
+  - `SN`: Student number (int).
+  
+- Description: Checks if the student with the given student number (`SN`) is enrolled in the subject. Returns `true` if the student is found in the `Subject_Grades` array, `false` otherwise.
+
+---
+
+**removeStudent(int SN)**
+
+- Parameters:
+  - `SN`: Student number (int).
+  
+- Description: Removes the student with the given student number (`SN`) from the subject. It sets both the student number and their grade to zero in the `Subject_Grades` array.
+
+---
+
+**getStudent_Grade(int SN)**
+
+- Parameters:
+  - `SN`: Student number (int).
+  
+- Description: Returns the grade of the student with the given student number (`SN`). If the student is not found, it returns `-10`.
+
+---
+
+**setSubject_Name(String Subject_Name)**
+
+- Parameters:
+  - `Subject_Name`: New name of the subject (String).
+  
+- Description: Updates the subject's name to the provided `Subject_Name`.
+
+---
+
+**setSubject_Code(int Subject_Code)**
+
+- Parameters:
+  - `Subject_Code`: New code of the subject (int).
+  
+- Description: Updates the subject's code to the provided `Subject_Code`.
+
+---
+
+**setStudent_Grades(int StudentNumber, int Grade)**
+
+- Parameters:
+  - `StudentNumber`: Student number (int).
+  - `Grade`: Grade of the student (int).
+  
+- Description: Enrolls a student by adding their student number and grade to the `Subject_Grades` array. It assigns the values to the first available slot (where the student number is less than 1000).
+
+---
