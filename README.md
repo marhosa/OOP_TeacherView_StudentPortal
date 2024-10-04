@@ -6,7 +6,8 @@ Methods Description are generated with document generator.
 How to use:
 ---
 
-1.) Download source code
+1.) [Download](https://github.com/marhosa/OOP_TeacherView_StudentPortal/archive/refs/heads/main.zip) source code
+
 
 2.) Go To OOPMIDTERMSLAB -> src -> Main and run Main.java
 
