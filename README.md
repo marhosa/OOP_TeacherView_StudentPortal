@@ -6,6 +6,7 @@ took me 8hrs to code and debug... well mostly debug.
 How to use:
 
 1.) Download source code
+
 2.) Go To OOPMIDTERMSLAB -> src -> Main and run Main.java
 --------------------------------------------------------------
 //will complete the rest here later
