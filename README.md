@@ -329,3 +329,14 @@ Subject(String Subject_Name, int Subject_Code)
 - Description: Enrolls a student by adding their student number and grade to the `Subject_Grades` array. It assigns the values to the first available slot (where the student number is less than 1000).
 
 ---
+
+User Flow Chart
+---
+![image](https://github.com/user-attachments/assets/69d039e4-dd64-4d10-bc5c-8d36aea6754a)
+
+
+UML in a nutshell
+---
+![image](https://github.com/user-attachments/assets/13eb5729-3e6f-479c-84b9-441d7926a7c2)
+
+
