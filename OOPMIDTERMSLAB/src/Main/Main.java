@@ -492,6 +492,11 @@ public class Main {
 
                 case 5:
                     spacer(50);
+                    if(students.isEmpty()){
+                        System.out.println("NO STUDENTS...");
+                        confirm();
+                        break;
+                    }
                     //creates a 2d array containing
                     float temparr [][] = new float[2][students.size()];
 
