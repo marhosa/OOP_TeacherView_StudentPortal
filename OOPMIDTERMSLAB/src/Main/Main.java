@@ -21,6 +21,7 @@ import java.util.List;
 
 public class Main {
 
+
     static void confirm(){
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPress Enter to continue... ");
@@ -130,6 +131,21 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        spacer(5);
+        System.out.println(" ___  ___        ___  _________   \n" +
+                "|\\  \\|\\  \\      |\\  \\|\\___   ___\\ \n" +
+                "\\ \\  \\\\\\  \\     \\ \\  \\|___ \\  \\_| \n" +
+                " \\ \\   __  \\  __ \\ \\  \\   \\ \\  \\  \n" +
+                "  \\ \\  \\ \\  \\|\\  \\\\_\\  \\   \\ \\  \\ \n" +
+                "   \\ \\__\\ \\__\\ \\________\\   \\ \\__\\\n" +
+                "    \\|__|\\|__|\\|________|    \\|__|\n" +
+                "                                  \n" +
+                "                                  \n" +
+                "                                  ");
+        System.out.println("\nWelcome to the HJT Student Grading Management System Project!\n\n");
+
+        confirm();
 
         spacer(50);
         Scanner sc = new Scanner(System.in);
