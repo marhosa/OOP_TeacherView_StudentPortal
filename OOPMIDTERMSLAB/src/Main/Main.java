@@ -1,4 +1,5 @@
 package Main;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,12 +57,54 @@ public class Main {
         System.out.println("[1] ADD/REMOVE STUDENT");
         System.out.println("[2] ADD/REMOVE SUBJECT");
         System.out.println("\n[3] MODIFY SUBJECT");
-        System.out.println("[4] SEARCH STUDENT");
+        System.out.println("\n[4] SEARCH STUDENT (frequently used)");
         System.out.println("\n[5] LIST STUDENTS RANKED BY GWA");
         System.out.println("[6] LIST ALL STUDENTS and their INFO");
         System.out.println("[7] LIST ALL SUBJECT INFO WITH HIGHEST/LOWEST MARK AND COURSE CODE");
-        System.out.println("\n[8] EXIT MAIN PROGRAM");
+        System.out.println("\n[8] help and test case guide");
+        System.out.println("[9] EXIT THE PROGRAM (progress will be lost)");
         System.out.println("---------------------------------");
+    }
+
+    static void howtobasic(){
+        spacer(50);
+        System.out.println("---------------------------------------------");
+        System.out.println("how to do the test cases?");
+        System.out.println("     Test Case 1, Inputting a Student Grade for Multiple Subjects.");
+        System.out.println("         - First Add Students (refer to mainmenu option 1)");
+        System.out.println("         - Then Add Subjects (refer to mainmenu option 2)");
+        System.out.println("         - Finally, enroll the STUDENTS to the created SUBJECTS manually");
+        System.out.println("           (mainmenu option 3 --> submenu option 1\n");
+        System.out.println("     Test Case 2, Search a student by name.");
+        System.out.println("         - simply click on mainmenu option 4");
+        System.out.println("         - then input either the FIRST NAME or LAST NAME or STUDENT NUMBER of the student\n");
+        System.out.println("     Test Case 3, Adding a new Subject.");
+        System.out.println("         - choose option 2 on mainmenu, then choose create a subject");
+        System.out.println("         - you can add enroll the students manually to the subjects via mainmenu option 3\n");
+        System.out.println("     Test Case 4, Ranking students by their average marks");
+        System.out.println("         - choose option 5 on the mainmenu, automatically sorts the students in an descending order\n");
+        System.out.println("     Test Case 5, Updating Student Marks");
+        System.out.println("         - You can manually update certain grades of the student via mainmenu option 3");
+        System.out.println("         - then go to submenu option 3\n");
+        System.out.println("     Test Case 6, Validating input marks");
+        System.out.println("         - everything on the mainmenu option 3 submenu only limits student grades from 0 to 100\n");
+        System.out.println("     Test Case 7, Display Subject-Wise Highest and Lowest Marks");
+        System.out.println("         - You can see the Highest and Lowest Marks per subject via mainmenu option 7\n");
+        System.out.println("     Test Case 8, Search for a student not in a system.");
+        System.out.println("         - You can try it on option 4, and even on option 3, submenus\n");
+        System.out.println("     Test Case 9, Input validation for number of students and subjects");
+        System.out.println("         - The program uses dynamic lists to store the objects of people and subjects\n");
+        System.out.println("     Test Case 10, Search with case sensitivity");
+        System.out.println("         - mainmenu option 4 offers this feature");
+        System.out.println("           this feature on option 3 submenus are discouraged as there are chances that some students");
+        System.out.println("           you can have the same last name and same first name, or even both.");
+        System.out.println("           which is the purpose of the student number as a unique identifier\n\n");
+        System.out.println("INFORMATION ABOUT THIS CODE");
+        System.out.println("     Sorting Algorithm: Bubble Sort");
+        System.out.println("     Search Algorithm: Linear Search");
+        System.out.println("     More info at https://github.com/marhosa/OOP_TeacherView_StudentPortal\n\n\n (scroll up heheuheu)");
+
+        confirm();
     }
 
     static int generateStudentNum(int x){
@@ -237,7 +280,20 @@ public class Main {
                                         confirm();
                                         break;
                                     }
-                                    listStudents(students);
+                                    boolean no_available_students_to_add = true;
+                                    for (Student student : students) {
+                                        if(!subs.isEnrolled(student.getStudent_number())) {
+                                            System.out.println(student.getLastName() + " " + student.getFirstName() + "  #" + student.getStudent_number());
+                                            no_available_students_to_add = false;
+                                        }
+                                    }
+
+                                    if(no_available_students_to_add){
+                                        System.out.println("ALL students are TAKING this subject!");
+                                        confirm();
+                                        break;
+                                    }
+
                                     System.out.print("Enter Student Number to ADD: ");
                                     studentnumtemp = sc.nextInt();
 
@@ -268,12 +324,21 @@ public class Main {
                                 //remove student from course
                                 case 2:
                                     spacer(5);
-                                    listStudents(students);
+                                    for (Student student : students) {
+                                        if(subs.isEnrolled(student.getStudent_number())) {
+                                            System.out.println(student.getLastName() + " " + student.getFirstName() + "  #" + student.getStudent_number());
+                                        }
+                                    }
                                     System.out.print("Enter Student Number to REMOVE: ");
                                     studentnumtemp = sc.nextInt();
 
                                     if(!studentExists(studentnumtemp, students)){
                                         System.out.println("Student does not Exist!");
+                                        confirm();
+                                        break;
+                                    }
+                                    if(!subs.isEnrolled(studentnumtemp)){
+                                        System.out.println("Student not ENROLLED!");
                                         confirm();
                                         break;
                                     }
@@ -286,7 +351,11 @@ public class Main {
                                 //change existing student grade
                                 case 3:
                                     spacer(5);
-                                    listStudents(students);
+                                    for (Student student : students) {
+                                        if(subs.isEnrolled(student.getStudent_number())) {
+                                            System.out.println(student.getLastName() + " " + student.getFirstName() + "  #" + student.getStudent_number());
+                                        }
+                                    }
                                     System.out.print("Enter Student Number to CHANGE GRADE: ");
                                     studentnumtemp = sc.nextInt();
 
@@ -295,6 +364,13 @@ public class Main {
                                         confirm();
                                         break;
                                     }
+                                    if(!subs.isEnrolled(studentnumtemp)){
+                                        System.out.println("Student not ENROLLED!");
+                                        confirm();
+                                        break;
+                                    }
+
+
                                     System.out.print("Enter NEW Student Grade: ");
                                     studentgradetemp = sc.nextInt();
                                     while(studentgradetemp > 100 || studentgradetemp < 0){
@@ -333,8 +409,6 @@ public class Main {
                         break;
                     }
                     break;
-
-
 
                 case 4:
                     spacer(5);
@@ -451,7 +525,7 @@ public class Main {
                         System.out.println("GWA: "+ temparr[1][i]);
                         for(Student student : students){
                             if(student.getStudent_number() == temparr[0][i]){
-                                System.out.print(" | Name: " + student.getLastName() + " " + student.getFirstName());
+                                System.out.print(" | LN: " + student.getLastName() + "   FN: " + student.getFirstName());
                                 System.out.println(" ");
                             }
                         }
@@ -568,7 +642,7 @@ public class Main {
                     System.out.println("-------------\nSUBJECT INFO\n---");
                     for(int i = 0; i < subjects.size(); i++){
                         Subject subs = subjects.get(i);
-                        System.out.println("Subject: " + subs.getSubject_Name());
+                        System.out.println("Subject: " + subs.getSubject_Name() + "   CODE: " + subs.getSubject_Code());
                         System.out.println("Highest Grade: " + persub[1][i]);
                         System.out.println("Lowest Grade: " + persub[2][i]);
                         spacer(2);
@@ -581,6 +655,10 @@ public class Main {
 
 
                 case 8:
+                    howtobasic();
+                    break;
+
+                case 9:
                     spacer(5);
                     sc.close();
                     System.out.println("EXITING MAIN PROGRAM... THANK YOU FOR USING!");
