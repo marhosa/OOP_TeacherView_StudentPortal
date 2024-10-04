@@ -1,9 +1,23 @@
+/*
+NOTES:
+this program is developed on intellij
+how to run on apache netbeans?
+copy Main folder (folder that includes Main.java, People.java, Student.java, Subject.java
+then create a new apache netbeans project
+after that, paste the Main folder in Source Packages
+
+still not running?
+here is the software run on apache netbeans ide 22:
+https://github.com/marhosa/dump_javaoop/tree/main/JavaApplication24
+
+ */
+
+
+
 package Main;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedMap;
 
 public class Main {
 
