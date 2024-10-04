@@ -11,4 +11,6 @@ How to use:
 
 Some Stuff to Note:
 --------------------------------------------------------------
-//will complete the rest here later
+Very Unoptimized... 
+Search Algorithm Used is Linear Search 
+Sort Algorithm Used is Bubble Sort
