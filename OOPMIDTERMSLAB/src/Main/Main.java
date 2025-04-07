@@ -10,6 +10,8 @@ still not running?
 here is the software run on apache netbeans ide 22:
 https://github.com/marhosa/dump_javaoop/tree/main/JavaApplication24
 
+Thank You Lods
+
  */
 
 
