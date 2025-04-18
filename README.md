@@ -3,7 +3,7 @@ Beginner Simple Java OOP Project where you are a teacher that can add and remove
 took me 8hrs to code and debug... well mostly debug.
 Methods Description are generated with document generator.
 
-One of my first ever program that I am proud of. Everything here is unique and no AI generators are used to challenge myself.
+One of my first programs that I am proud of. Everything here is unique and no AI generators are used to challenge myself.
 
 How to use:
 ---
